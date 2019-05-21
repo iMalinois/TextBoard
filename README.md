@@ -6,6 +6,7 @@
        - [2.1.1. Your First Line](#211-your-first-line)
           - [2.1.2.1. Accessing the line using its ID](#2121-accessing-the-line-using-its-id)
        - [2.1.2. Adding some fields](#212-adding-some-fields)
+         - [2.1.2.1. Field ```size``` and ```size_limit``` properties](#2121-field-size-and-size_limit-properties)
        - [2.1.3. Creating A Custom Dynamic Line Class](#213-creating-a-custom-dynamic-line-class)
           - [2.1.3.1. BoardLine ```create``` method](#2131-boardline-create-method)
           - [2.1.3.2. BoardLine ```duplicate``` method](#2132-boardline-duplicate-method)
@@ -143,6 +144,14 @@ This time, the output would be:
 ```
 
 As you can see, there is a padding for each field that fill it to the requested size.
+
+##### **2.1.2.1. Field ```size``` and ```size_limit``` properties**
+
+As mentioned before, fields may be given a size, meaning that when this field is printed, it will be padded or trimmed to this size.
+The ```LineField``` class has two properties that are relevant and affected by this give size:
+
+* **size** - This property returns the size of the field. if a size was specified when the field was created, that would be the return value of this property, otherwise, the return value of this property will be the length of the text stored in this field.
+* **size_limit** - If a size was specified when the field was created, the return valhe of this property is that specified value, and in this case both ```size``` and ```size_limit``` will return the same value. but if no size was specified when the field was created, the return value is ```None```.
 
 #### **2.1.3. Creating A Custom Dynamic Line Class**
 

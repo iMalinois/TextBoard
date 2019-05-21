@@ -84,7 +84,12 @@ class BoardLine(BoardObject):
         @property
         def size(self):
             """The size property of the LineField"""
-            return self._size if self._size != None else ""
+            return self._size if self._size != None else len(self.text)
+
+        @property
+        def size_limit(self):
+            """The size lmit property of the LineField"""
+            return self._size
 
         @property
         def text(self):
@@ -132,7 +137,7 @@ class BoardLine(BoardObject):
             """build(self)
             Build the string of the LineField
             """
-            text = "{text:{size}}".format(text=self.text, size=self.size).replace("\n", '')
+            text = "{text:{size}}".format(text=self.text[:self.size], size=(self.size if self.size != 0 else "")).replace("\n", '')
             if self.style is not None:
                 text = self.style.format(text)
             return text
